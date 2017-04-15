@@ -1,0 +1,29 @@
+{
+  "name": "asar-server",
+  "version": "1.0.0",
+  "description": "Simple server that serves from an ASAR file",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Ivshti/asar-server.git"
+  },
+  "keywords": [
+    "asar",
+    "serevr",
+    "http"
+  ],
+  "author": "Ivo Georgiev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ivshti/asar-server/issues"
+  },
+  "bin" : { "asar-server" : "./init.js" },
+  "homepage": "https://github.com/Ivshti/asar-server#readme",
+  "dependencies": {
+    "asar-lite-stremio": "^0.12.3",
+    "minimist": "^1.2.0"
+  }
+}
