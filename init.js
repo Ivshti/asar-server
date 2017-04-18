@@ -44,6 +44,7 @@ var server = http.createServer(function(req, res) {
 			console.error(err)
 			res.writeHead(500)
 			res.end('internal server error')
+			return
 		}
 		res.end(buf)
 	})
@@ -52,7 +53,7 @@ var server = http.createServer(function(req, res) {
 
 asar.listFiles(function(err, files) {
 	if (err) throw err
-	
+
 	asarPaths = files
 	asarPaths['/'] = asarPaths['/index.html']
 
