@@ -51,6 +51,8 @@ var server = http.createServer(function(req, res) {
 
 
 asar.listFiles(function(err, files) {
+	if (err) throw err
+	
 	asarPaths = files
 	asarPaths['/'] = asarPaths['/index.html']
 
