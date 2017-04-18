@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-asar-reader@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/asar-reader/-/asar-reader-1.0.0.tgz#1a453d0d750e5c2e3ed620247b53d17bd3d4a805"
+asar-reader@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/asar-reader/-/asar-reader-1.1.0.tgz#9ee238971e6dc992b33fb6fcfb185e92cc7bff0c"
   dependencies:
     chromium-pickle-js "^0.2.0"
     thunky "^1.0.2"

@@ -16,7 +16,7 @@ if (! asarFile) {
 	process.exit(1)
 }
 
-var asar = asarReader(asarFile)
+var asar = asarReader(asarFile, { keepOpenFor: 2000 })
 
 var port = argv.p || argv.port || 8080
 var cache = argv.c | argv.cache || 60
