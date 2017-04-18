@@ -20,10 +20,12 @@
   "bugs": {
     "url": "https://github.com/Ivshti/asar-server/issues"
   },
-  "bin" : { "asar-server" : "./init.js" },
+  "bin": {
+    "asar-server": "./init.js"
+  },
   "homepage": "https://github.com/Ivshti/asar-server#readme",
   "dependencies": {
-    "asar-lite-stremio": "^0.12.3",
+    "asar-reader": "^1.0.0",
     "minimist": "^1.2.0"
   }
 }
