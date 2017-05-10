@@ -1,6 +1,6 @@
 {
   "name": "asar-server",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "Simple server that serves from an ASAR file",
   "main": "index.js",
   "scripts": {
