@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var asar = require('asar-lite-stremio')
+var asarReader = require('asar-reader')
 var minimist = require('minimist')
 var path = require('path')
 var http = require('http')
@@ -17,8 +17,7 @@ if (! asarFile) {
 	process.exit(1)
 }
 
-asar.listPackage(asarFile).forEach(function(p) { asarPaths[p.split(path.sep).join('/')] = p })
-asarPaths['/'] = '/index.html'
+var asar = asarReader(asarFile, { keepOpenFor: 2000 })
 
 var port = argv.p || argv.port || 8080
 var cache = argv.c | argv.cache || 60
@@ -41,14 +40,31 @@ var server = http.createServer(function(req, res) {
         headers['content-type'] = mime.lookup(pathname);
 	
 	res.writeHead(200, headers)
-    res.end(asar.extractFile(asarFile, found.substring(1)))
+
+	asar.readFile(found, function(err, buf) {
+		if (err) {
+			console.error(err)
+			res.writeHead(500)
+			res.end('internal server error')
+			return
+		}
+		res.end(buf)
+	})
 })
 
-server.listen(port, (err) => {  
-	if (err) {
-		console.error(err)
-		process.exit(1)
-	}
 
-	console.log('asar-server is listening on '+port)
+asar.listFiles(function(err, files) {
+	if (err) throw err
+
+	asarPaths = files
+	asarPaths['/'] = asarPaths['/index.html']
+
+	server.listen(port, (err) => {  
+		if (err) {
+			console.error(err)
+			process.exit(1)
+		}
+
+		console.log('asar-server is listening on '+port)
+	})
 })
