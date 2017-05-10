@@ -35,9 +35,8 @@ var server = http.createServer(function(req, res) {
 	}
 
 	var headers = { }
-
 	if (cache) headers['cache-control'] = 'max-age='+cache
-        headers['content-type'] = mime.lookup(pathname);
+        headers['content-type'] = mime.lookup(pathname == '/' ? 'index.html' : pathname);
 	
 	res.writeHead(200, headers)
 
