@@ -5,6 +5,7 @@ var minimist = require('minimist')
 var path = require('path')
 var http = require('http')
 var url = require('url')
+var mime = require('mime')
 
 var argv = require('minimist')(process.argv.slice(2));
 var asarPaths = {};
@@ -37,7 +38,8 @@ var server = http.createServer(function(req, res) {
 	var headers = { }
 
 	if (cache) headers['cache-control'] = 'max-age='+cache
-
+        headers['content-type'] = mime.lookup(pathname);
+	
 	res.writeHead(200, headers)
     res.end(asar.extractFile(asarFile, found.substring(1)))
 })
